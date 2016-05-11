@@ -4,7 +4,7 @@ if isdefined(:Polynomials)
    import Polynomials:polyval
 end
 
-export FastPolynomial, polyval
+export FastPoly, polyval
 
 include("fastpoly.jl")
 
