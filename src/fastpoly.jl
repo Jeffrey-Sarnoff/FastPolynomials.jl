@@ -37,7 +37,7 @@ macro Horner(x, p...)
     Expr(:block, :(t = $(esc(x))), ex)
 end
 
-f_Horner_macro(x) = @Horner(x, coeffs...)
+f_Horner_macro(x) = @Horner(x, coeffs)
 
 # from base, with fma instead of muladd
 macro HornerFMA(x, p...)
@@ -48,7 +48,7 @@ macro HornerFMA(x, p...)
     Expr(:block, :(t = $(esc(x))), ex)
 end
 
-f_HornerFMA_macro(x) = @hornerFMA(x, coeffs...)
+f_HornerFMA_macro(x) = @hornerFMA(x, coeffs)
 
 
 
