@@ -48,7 +48,7 @@ macro HornerFMA(x, p...)
     Expr(:block, :(t = $(esc(x))), ex)
 end
 
-f_HornerFMA_macro(x) = @hornerFMA(x, coeffs)
+f_HornerFMA_macro(x) = @HornerFMA(x, coeffs)
 
 
 
