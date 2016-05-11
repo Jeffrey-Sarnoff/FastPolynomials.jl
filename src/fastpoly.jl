@@ -25,3 +25,18 @@ immutable FastPoly{T<:Number}
         end
     end
 end
+
+
+# from base, with fma instead of muladd
+macro hornerFMA(x, p...)
+    ex = esc(p[end])
+    for i = length(p)-1:-1:1
+        ex = :(fma(t, $ex, $(esc(p[i]))))
+    end
+    Expr(:block, :(t = $(esc(x))), ex)
+end
+
+f_hornerFMA_macro(x, coeffs) = @hornerFMA(x, coeffs)
+
+
+
