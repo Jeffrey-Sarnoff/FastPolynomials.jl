@@ -25,7 +25,19 @@ immutable FastPoly{T<:Number}
         end
     end
 end
+#=
+   via Julia High Performance by Avik Sengupta
+=#
+# from base
+macro Horner(x, p...)
+    ex = esc(p[end])
+    for i = length(p)-1:-1:1
+        ex = :(muladd(t, $ex, $(esc(p[i]))))
+    end
+    Expr(:block, :(t = $(esc(x))), ex)
+end
 
+f_Horner_macro(x, coeffs) = @Horner(x, coeffs...)
 
 # from base, with fma instead of muladd
 macro hornerFMA(x, p...)
@@ -36,7 +48,7 @@ macro hornerFMA(x, p...)
     Expr(:block, :(t = $(esc(x))), ex)
 end
 
-f_hornerFMA_macro(x, coeffs) = @hornerFMA(x, coeffs)
+f_hornerFMA_macro(x, coeffs) = @hornerFMA(x, coeffs...)
 
 
 
