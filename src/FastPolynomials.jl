@@ -6,7 +6,7 @@ if isdefined(:Polynomials)
    import Polynomials:polyval
 end
 
-export FastPoly, polyval, polyvalHorner, polyvalHornerFMA, @Horner, @HornerFMA
+export FastPoly, polyvalHorner, polyvalHornerFMA, @Horner, @HornerFMA
 
 include("fastpoly.jl")
 
