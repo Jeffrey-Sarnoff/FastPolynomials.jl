@@ -196,10 +196,10 @@ function optforce(x,coeffs)
            monomials[k] *= x2
         end
         if isodd(n-i)
-            monomial[i] *= x
+            monomials[i] *= x
         end
     end
-    monomial[n] = coeffs[n]
+    monomials[n] = coeffs[n]
     sum(monomials)
 end
 
