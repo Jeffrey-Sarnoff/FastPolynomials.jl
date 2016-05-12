@@ -12,7 +12,7 @@ An optional variable parameter can be added:
 FastPoly([1,2,3], :s)       # FastPoly(1 + 2s + 3s^2)
 ```
 """
-immutable FastPoly{T<:Number}
+immutable FastPoly{T<:Real}
     a::Vector{T}
     var::Symbol
     
