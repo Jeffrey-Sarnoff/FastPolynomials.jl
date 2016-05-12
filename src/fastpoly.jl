@@ -43,7 +43,7 @@ macro Horner(x, p...)
     Expr(:block, :(t = $(esc(x))), ex)
 end
 
-polyvalHorner(x) = @Horner(x, coeffs)
+polyvalHorner(x::Real) = @Horner(x, coeffs)
 
 # from base, with fma instead of muladd
 macro HornerFMA(x, p...)
@@ -54,7 +54,7 @@ macro HornerFMA(x, p...)
     Expr(:block, :(t = $(esc(x))), ex)
 end
 
-polyvalHornerFMA(x) = @HornerFMA(x, coeffs)
+polyvalHornerFMA(x::{SysFloat}) = @HornerFMA(x, coeffs)
 
 
 
