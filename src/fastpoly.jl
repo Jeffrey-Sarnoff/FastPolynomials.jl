@@ -54,7 +54,7 @@ macro HornerFMA(x, p...)
     Expr(:block, :(t = $(esc(x))), ex)
 end
 
-polyvalHornerFMA(x::{SysFloat}) = @HornerFMA(x, coeffs)
+polyvalHornerFMA(x::Union{Float64,Float32}) = @HornerFMA(x, coeffs)
 
 
 
