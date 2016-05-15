@@ -1,5 +1,21 @@
 # from Polynomials.jl (Poly)
 
+#=
+poly = (x-1)^7
+polycoeffs = [1.,-7.,21.,-35.,35.,-21.,7.,-1.]
+xx = sqrt(2.5)
+bigxx = sqrt(big(5)/2)
+poly=Poly(polycoeffs)
+poly1=polyval(xx,poly)
+poly2=@Horner(xx,1.,-7.,21.,-35.,35.,-21.,7.,-1.)
+poly3=@HornerFMA(xx,1.,-7.,21.,-35.,35.,-21.,7.,-1.)
+poly4=parse(Float64, string(polyval(bigxx,poly))) # Float64(polyval(bigxx,poly))
+
+poly4== -0.02238511157128063
+poly3== -0.02238511157129503
+poly2== -0.022385111571300076
+poly1== -0.022385111571300076
+=#
 
 """
 * `FastPoly{T<:Number}(a::Vector)`: Construct a polynomial from its coefficients, lowest order first. That is if `p=a_n x^n + ... + a_2 x^2 + a_1 x^1 + a_0`, we construct this through `Poly([a_0, a_1, ..., a_n])`.
